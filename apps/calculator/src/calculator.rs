@@ -1,27 +1,44 @@
 pub struct Calculator {
     expression: Vec<String>,
-    message: String
+    result: Option<f32>,
+    message: String,
+    pub done: bool
 }
 
 impl Calculator {
     pub fn new() -> Calculator {
         Calculator {
             expression: Vec::new(),
-            message: String::new()
+            message: String::new(),
+            result: None,
+            done: false,
         }
     }
 
     pub fn add_term(&mut self, term: &str) {
+        self.reset();
         self.message = String::new();
         self.expression.push(term.to_string());
     }
 
     pub fn display_text(&self) -> String {
-        self.expression.join("")
+        if let Some(result) = self.result {
+            format!("{}{}", self.expression.join(""), result.to_string())
+        }else {
+            self.expression.join("")
+        }
     }
 
     pub fn clear(&mut self) {
         self.expression.clear();
+    }
+
+    pub fn reset(&mut self) {
+        if self.done {
+            self.clear();
+            self.result = None;
+            self.done = false;
+        }
     }
 
     pub fn set_message(&mut self, message: &str) {
@@ -33,7 +50,12 @@ impl Calculator {
         self.message.clone()
     }
 
-    pub fn result(&self) -> Result<f32, Box<dyn std::error::Error>>{
+    pub fn set_result(&mut self, value: f32) {
+        self.done = true;
+        self.result = Some(value);
+    }
+
+    pub fn result(& self) -> Result<f32, Box<dyn std::error::Error>>{
         if self.expression.len() != 4 {
             Err("Invalid Term Count".into())
         }else{
@@ -54,7 +76,9 @@ impl Default for Calculator {
     fn default() -> Self {
         Calculator {
             expression: Vec::new(),
-            message: String::new()
+            message: String::new(),
+            result: None,
+            done: false
         }
     }
 }

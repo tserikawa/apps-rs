@@ -75,7 +75,7 @@ impl Keypad {
             if ui.add_sized(size_1x1, Button::new("=")).clicked() {
                 calculator.add_term("=");
                 match calculator.result() {
-                    Ok(result) => calculator.add_term(result.to_string().as_str()),
+                    Ok(result) => calculator.set_result(result),
                     Err(e) => {
                         calculator.set_message(&format!("{e}"));
                         calculator.clear();
