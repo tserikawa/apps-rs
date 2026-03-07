@@ -1,3 +1,5 @@
+use crate::decoder::decode;
+
 pub struct Calculator {
     expression: Vec<String>,
     result: Option<f32>,
@@ -56,7 +58,7 @@ impl Calculator {
     }
 
     pub fn result(& self) -> Result<f32, Box<dyn std::error::Error>>{
-        let terms = self.decode();
+        let terms = decode(self.expression.join("").as_str());
         if terms.len() != 3 {
             Err(format!("Invalid Term Count. {}", terms.join(",")).into())
         }else{
@@ -72,26 +74,6 @@ impl Calculator {
         }
     }
 
-    fn decode(&self) -> Vec<String> {
-        let mut output = Vec::new();
-        
-        let expression = self.expression.join("");
-        let mut current = String::new();
-        for c in expression.chars(){
-            if c.is_digit(10){
-                current.push(c);
-            }else if ['+', '-', '*', '/'].contains(&c) {
-                output.push(current.clone());
-                current = String::new();
-                output.push(c.to_string());
-            }
-        }
-        if current.len() > 0 {
-            output.push(current);
-        }
-
-        output
-    }
 }
 
 impl Default for Calculator {
