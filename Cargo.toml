@@ -1,0 +1,6 @@
+[workspace]
+members = ["", "apps/calculator"]
+resolver = "2"
+
+[workspace.dependencies]
+eframe = "0.33.3"
