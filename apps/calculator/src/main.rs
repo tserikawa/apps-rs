@@ -7,7 +7,7 @@ mod keypad;
 
 fn main() -> Result<(), eframe::Error> {
     let options = eframe::NativeOptions{
-        viewport: egui::ViewportBuilder::default().with_inner_size([160.0, 160.0]),
+        viewport: egui::ViewportBuilder::default().with_inner_size([160.0, 180.0]),
         ..Default::default()
     };
     eframe::run_native(
@@ -32,6 +32,12 @@ impl eframe::App for CalculatorApp {
             //      https://github.com/emilk/egui/blob/main/crates/egui/src/widgets/text_edit/builder.rs#L425
             egui::TextEdit::singleline(&mut self.calculator.display_text())
                 .background_color(Color32::LIGHT_GRAY)
+                .text_color(Color32::BLACK)
+                .horizontal_align(egui::Align::Max)
+                .show(ui);
+
+            egui::TextEdit::singleline(&mut self.calculator.message())
+                .background_color(Color32::DARK_GRAY)
                 .text_color(Color32::BLACK)
                 .horizontal_align(egui::Align::Max)
                 .show(ui);

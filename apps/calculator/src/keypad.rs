@@ -76,7 +76,8 @@ impl Keypad {
                 calculator.add_term("=");
                 match calculator.result() {
                     Ok(result) => calculator.add_term(result.to_string().as_str()),
-                    Err(_) => {
+                    Err(e) => {
+                        calculator.set_message(&format!("{e}"));
                         calculator.clear();
                     }
                 }
