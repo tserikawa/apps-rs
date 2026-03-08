@@ -33,6 +33,7 @@ impl Calculator {
 
     pub fn clear(&mut self) {
         self.expression.clear();
+        self.result = None;
     }
 
     pub fn reset(&mut self) {
