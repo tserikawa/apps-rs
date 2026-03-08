@@ -4,7 +4,7 @@ pub struct Calculator {
     expression: Vec<String>,
     result: Option<f32>,
     message: String,
-    pub done: bool
+    pub done: bool,
 }
 
 impl Calculator {
@@ -26,7 +26,7 @@ impl Calculator {
     pub fn display_text(&self) -> String {
         if let Some(result) = self.result {
             format!("{}={}", self.expression.join(""), result.to_string())
-        }else {
+        } else {
             self.expression.join("")
         }
     }
@@ -57,11 +57,11 @@ impl Calculator {
         self.result = Some(value);
     }
 
-    pub fn result(& self) -> Result<f32, Box<dyn std::error::Error>>{
+    pub fn result(&self) -> Result<f32, Box<dyn std::error::Error>> {
         let terms = decode(self.expression.join("").as_str());
         if terms.len() != 3 {
             Err(format!("Invalid Term Count. {}", terms.join(",")).into())
-        }else{
+        } else {
             let first = terms[0].parse::<f32>()?;
             let operator = &terms[1];
             let second = terms[2].parse::<f32>()?;
@@ -69,11 +69,10 @@ impl Calculator {
                 "+" => Ok(first + second),
                 "-" => Ok(first - second),
                 "*" => Ok(first * second),
-                _ => Ok(first / second)
+                _ => Ok(first / second),
             }
         }
     }
-
 }
 
 impl Default for Calculator {
@@ -82,7 +81,7 @@ impl Default for Calculator {
             expression: Vec::new(),
             message: String::new(),
             result: None,
-            done: false
+            done: false,
         }
     }
 }

@@ -6,6 +6,9 @@ use eframe::egui::vec2;
 
 use crate::calculator::Calculator;
 
+pub const BUTTON_WIDTH: f32 = 20.0;
+pub const BUTTON_HEIGHT: f32 = 20.0;
+
 pub struct Keypad {
     id: egui::Id,
 }
@@ -19,8 +22,8 @@ impl Keypad {
 
     pub fn add_ui(&self, ui: &mut Ui, calculator: &mut Calculator) {
         let window_margin = ui.spacing().window_margin;
-        let size_1x1 = vec2(32.0, 26.0);
-
+        let size_1x1 = vec2(BUTTON_WIDTH, BUTTON_HEIGHT);
+        
         ui.spacing_mut().item_spacing = Vec2::splat(window_margin.leftf());
 
         ui.horizontal(|ui| {
