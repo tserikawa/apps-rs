@@ -69,11 +69,9 @@ impl Calculator {
                 "+" => Ok(first + second),
                 "-" => Ok(first - second),
                 "*" => Ok(first * second),
-                _ =>  {
-                    match second {
-                        0.0 => Err("0 division".into()),
-                        _ => Ok(first / second)
-                    }
+                _ => match second {
+                    0.0 => Err("0 division".into()),
+                    _ => Ok(first / second),
                 },
             }
         }

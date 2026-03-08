@@ -23,7 +23,7 @@ impl Keypad {
     pub fn add_ui(&self, ui: &mut Ui, calculator: &mut Calculator) {
         let window_margin = ui.spacing().window_margin;
         let size_1x1 = vec2(BUTTON_WIDTH, BUTTON_HEIGHT);
-        
+
         ui.spacing_mut().item_spacing = Vec2::splat(window_margin.leftf());
 
         ui.horizontal(|ui| {
