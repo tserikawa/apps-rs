@@ -6,8 +6,8 @@ use eframe::egui::vec2;
 
 use crate::calculator::Calculator;
 
-pub const BUTTON_WIDTH: f32 = 20.0;
-pub const BUTTON_HEIGHT: f32 = 20.0;
+pub const BUTTON_WIDTH: f32 = 40.0;
+pub const BUTTON_HEIGHT: f32 = 40.0;
 
 pub struct Keypad {
     id: egui::Id,
