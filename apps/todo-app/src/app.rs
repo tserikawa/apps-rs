@@ -3,6 +3,7 @@ use eframe::Frame;
 
 use crate::filter::{Filter, add_filter};
 use crate::input::add_input;
+use crate::list::add_list;
 use crate::title::add_title;
 
 #[derive(Default)]
@@ -16,6 +17,7 @@ impl eframe::App for ToDoApp {
             add_title(ui);
             add_input(ui);
             add_filter(ui, &mut self.filter);
+            add_list(ui);
         });
     }
 }
