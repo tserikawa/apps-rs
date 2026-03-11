@@ -1,6 +1,8 @@
 use eframe::egui::{Button, Color32, FontFamily, FontId, Stroke, TextEdit, TextStyle, Ui, vec2};
 
-pub fn add_input(ui: &mut Ui) {
+use crate::todo::ToDoCollection;
+
+pub fn add_input(ui: &mut Ui, input: &mut String, todos: &mut ToDoCollection) {
     ui.horizontal(|ui| {
         // horizontal全体のBodyフォントサイズを変更
         ui.style_mut().text_styles.insert(
@@ -18,14 +20,14 @@ pub fn add_input(ui: &mut Ui) {
 
         ui.allocate_ui(vec2(left_width, ui.available_height()), |ui| {
             ui.style_mut().visuals.widgets.inactive.bg_stroke = Stroke::new(1.0, Color32::RED);
-            ui.add(TextEdit::singleline(&mut String::new()));
+            ui.add(TextEdit::singleline(input));
             ui.style_mut().visuals.widgets.inactive.bg_stroke = Stroke::new(1.0, Color32::TRANSPARENT);
         });
 
         ui.allocate_ui(vec2(right_width, ui.available_height()), |ui| {
-            ui.add(
-                Button::new("Add")
-            );
+            if ui.add(Button::new("Add")).clicked() {
+                todos.add(input.to_string(), false);
+            }
         });
     });
 }

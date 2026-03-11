@@ -8,6 +8,7 @@ mod filter;
 mod input;
 mod title;
 mod list;
+mod todo;
 
 fn main() -> Result<(), Error> {
     let windows_size = [400.0, 500.0];
