@@ -4,10 +4,10 @@ use eframe::egui::vec2;
 use crate::filter::Filter;
 use crate::todo::ToDoCollection;
 
-pub fn add_list(ui: &mut Ui, todos: &mut ToDoCollection, filter: &Filter) {
+pub fn update_list(ui: &mut Ui, todo_collection: &mut ToDoCollection, filter: &Filter) {
     let mut delete_ids = Vec::new();
 
-    let items = todos.items_mut(filter);
+    let items = todo_collection.items_mut(filter);
     for item in items {
         ui.horizontal(|ui| {
             let total_width = ui.available_width();
@@ -31,5 +31,5 @@ pub fn add_list(ui: &mut Ui, todos: &mut ToDoCollection, filter: &Filter) {
         });
     }
     
-    todos.delete(&delete_ids);
+    todo_collection.delete(&delete_ids);
 }

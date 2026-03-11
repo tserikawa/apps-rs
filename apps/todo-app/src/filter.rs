@@ -14,7 +14,7 @@ impl Default for Filter {
     }
 }
 
-pub fn add_filter(ui: &mut Ui, filter: &mut Filter) {
+pub fn update_filter(ui: &mut Ui, filter: &mut Filter) {
     ui.horizontal(|ui| {
         let total_width = ui.available_width();
         let left_size = vec2(0.3 * total_width, ui.available_height());

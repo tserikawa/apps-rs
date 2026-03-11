@@ -1,15 +1,15 @@
 use crate::filter::Filter;
 
 #[derive(Clone)]
-pub struct ToDoItem {
+pub struct ToDo {
     pub id: usize,
     pub content: String,
     pub completed: bool,
 }
 
-impl ToDoItem {
+impl ToDo {
     pub fn new(id: usize, content: String, completed: bool) -> Self {
-        ToDoItem { id, content, completed }
+        ToDo { id, content, completed }
     }
 
     pub fn is_show(&self, filter: &Filter) -> bool {
@@ -21,7 +21,7 @@ impl ToDoItem {
     }
 }
 
-impl Default for ToDoItem {
+impl Default for ToDo {
     fn default() -> Self {
         Self {
             id: 0,
@@ -33,26 +33,26 @@ impl Default for ToDoItem {
 
 pub struct ToDoCollection {
     id: usize,
-    items: Vec<ToDoItem>
+    todos: Vec<ToDo>
 }
 
 impl ToDoCollection {
     pub fn new() -> Self {
-        ToDoCollection {id: 1, items: Vec::new() }
+        ToDoCollection {id: 1, todos: Vec::new() }
     }
 
     pub fn add(&mut self, content: String, completed: bool) {
-        self.items.push(ToDoItem::new(self.id, content, completed));
+        self.todos.push(ToDo::new(self.id, content, completed));
         self.id += 1;
     }
 
     pub fn delete(&mut self, ids: &Vec<usize>) {
-        self.items = self.items.iter().cloned().filter(|f| !ids.contains(&f.id)).collect();
+        self.todos = self.todos.iter().cloned().filter(|f| !ids.contains(&f.id)).collect();
     }
 
-    pub fn items_mut(&mut self, filter: &Filter) -> Vec<&mut ToDoItem> {
+    pub fn items_mut(&mut self, filter: &Filter) -> Vec<&mut ToDo> {
         // 可変にするのはVec<T>そのものではなく、Vec<T>の各要素
-        self.items.iter_mut().filter(|f| f.is_show(filter)).collect()
+        self.todos.iter_mut().filter(|f| f.is_show(filter)).collect()
     }
 }
 

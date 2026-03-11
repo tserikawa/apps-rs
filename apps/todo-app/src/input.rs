@@ -2,7 +2,7 @@ use eframe::egui::{Button, Color32, FontFamily, FontId, Stroke, TextEdit, TextSt
 
 use crate::todo::ToDoCollection;
 
-pub fn add_input(ui: &mut Ui, input: &mut String, todos: &mut ToDoCollection) {
+pub fn update_input(ui: &mut Ui, input: &mut String, todos: &mut ToDoCollection) {
     ui.horizontal(|ui| {
         // horizontal全体のBodyフォントサイズを変更
         ui.style_mut().text_styles.insert(
