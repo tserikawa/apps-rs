@@ -620,6 +620,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "color-picker"
+version = "0.1.0"
+dependencies = [
+ "eframe",
+]
+
+[[package]]
 name = "combine"
 version = "4.6.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
