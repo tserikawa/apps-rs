@@ -25,7 +25,7 @@ pub fn update_input(ui: &mut Ui, input: &mut String, todos: &mut ToDoCollection)
         });
 
         ui.allocate_ui(vec2(right_width, ui.available_height()), |ui| {
-            if ui.add(Button::new("Add")).clicked() {
+            if ui.add(Button::new("Add")).clicked() && !input.is_empty() {
                 todos.add(input.to_string(), false);
             }
         });
