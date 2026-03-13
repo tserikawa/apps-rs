@@ -1,4 +1,3 @@
-use eframe::egui;
 use eframe::egui::Button;
 use eframe::egui::Ui;
 use eframe::egui::Vec2;
@@ -9,15 +8,11 @@ use crate::calculator::Calculator;
 pub const BUTTON_WIDTH: f32 = 40.0;
 pub const BUTTON_HEIGHT: f32 = 40.0;
 
-pub struct Keypad {
-    id: egui::Id,
-}
+pub struct Keypad;
 
 impl Keypad {
     pub fn new() -> Self {
-        Self {
-            id: egui::Id::new("keypad"),
-        }
+        Self
     }
 
     pub fn add_ui(&self, ui: &mut Ui, calculator: &mut Calculator) {
