@@ -1,13 +1,12 @@
-use eframe::egui::{CentralPanel, Context};
 use eframe::Frame;
+use eframe::egui::{CentralPanel, Context};
 
 use crate::preview::update_preview;
 use crate::slider::update_slider;
 use crate::title::update_title;
 
 #[derive(Default)]
-pub struct ColorPickerApp{
-}
+pub struct ColorPickerApp {}
 
 impl eframe::App for ColorPickerApp {
     fn update(&mut self, ctx: &Context, _frame: &mut Frame) {
@@ -18,5 +17,3 @@ impl eframe::App for ColorPickerApp {
         });
     }
 }
-
-

@@ -4,10 +4,10 @@ use eframe::{self, run_native};
 use eframe::{Error, NativeOptions};
 
 mod app;
-mod title;
+mod color;
 mod preview;
 mod slider;
-mod color;
+mod title;
 
 fn main() -> Result<(), Error> {
     let windows_size = [400.0, 500.0];

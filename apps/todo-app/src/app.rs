@@ -1,5 +1,5 @@
-use eframe::egui::{CentralPanel, Context};
 use eframe::Frame;
+use eframe::egui::{CentralPanel, Context};
 
 use crate::filter::{Filter, update_filter};
 use crate::input::update_input;
@@ -8,10 +8,10 @@ use crate::title::update_title;
 use crate::todo::ToDoCollection;
 
 #[derive(Default)]
-pub struct ToDoApp{
+pub struct ToDoApp {
     filter: Filter,
     input: String,
-    todos: ToDoCollection
+    todos: ToDoCollection,
 }
 
 impl eframe::App for ToDoApp {
@@ -24,5 +24,3 @@ impl eframe::App for ToDoApp {
         });
     }
 }
-
-

@@ -5,7 +5,7 @@ use eframe::egui::vec2;
 pub enum Filter {
     All,
     NotCompleted,
-    Completed
+    Completed,
 }
 
 impl Default for Filter {

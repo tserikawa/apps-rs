@@ -1,7 +1,6 @@
 use eframe::egui;
 use eframe::egui::Ui;
 
-
 pub fn update_slider(ui: &mut Ui) {
     let mut r = 0.0;
     ui.horizontal(|ui| {

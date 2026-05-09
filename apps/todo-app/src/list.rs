@@ -18,7 +18,7 @@ pub fn update_list(ui: &mut Ui, todo_collection: &mut ToDoCollection, filter: &F
             ui.allocate_ui(left_size, |ui| {
                 ui.checkbox(&mut item.completed, String::new());
             });
-            
+
             ui.allocate_ui(middle_size, |ui| {
                 ui.text_edit_singleline(&mut item.content);
             });
@@ -30,6 +30,6 @@ pub fn update_list(ui: &mut Ui, todo_collection: &mut ToDoCollection, filter: &F
             });
         });
     }
-    
+
     todo_collection.delete(&delete_ids);
 }

@@ -1,6 +1,7 @@
 [workspace]
-members = ["apps/calculator", "apps/color-picker", "apps/todo-app"]
+members = ["apps/calculator", "apps/color-picker", "apps/todo-app", "apps/counter-cli"]
 resolver = "2"
 
 [workspace.dependencies]
 eframe = "0.33.3"
+tokio = { version = "1", features = ["full"] }

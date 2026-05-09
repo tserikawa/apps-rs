@@ -6,8 +6,8 @@ use eframe::{Error, NativeOptions};
 mod app;
 mod filter;
 mod input;
-mod title;
 mod list;
+mod title;
 mod todo;
 
 fn main() -> Result<(), Error> {
